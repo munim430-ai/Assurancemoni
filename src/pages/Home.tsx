@@ -54,10 +54,7 @@ export default function Home() {
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="relative w-full overflow-hidden">
         {/* Video background */}
-        <div
-          className="pointer-events-none absolute z-0"
-          style={{ top: '300px', inset: 'auto 0 0 0' }}
-        >
+        <div className="pointer-events-none absolute inset-0 z-0">
           <video
             ref={videoRef}
             className="h-full w-full object-cover"
@@ -68,8 +65,8 @@ export default function Home() {
             preload="auto"
             style={{ opacity: 0, transition: 'opacity 0.1s linear' }}
           />
-          {/* Gradient overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+          {/* Fade in from top, keep middle clear, fade back to white at bottom */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-white/10 to-background" />
         </div>
 
         {/* Hero content */}
