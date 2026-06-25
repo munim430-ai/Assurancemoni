@@ -65,11 +65,6 @@ export const management: Manager[] = [
     role: 'Chairman & Managing Director',
     photo: '/chairman.jpg',
   },
-  {
-    name: '— add name —',
-    role: 'Director, Operations',
-    photo: '',
-  },
 ]
 
 export type Concern = {

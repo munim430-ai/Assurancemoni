@@ -22,9 +22,7 @@ export default function CorporateManagement() {
                     className="aspect-[4/5] w-full object-cover object-top transition-transform duration-500 hover:scale-[1.03]"
                   />
                 ) : (
-                  <div className="flex aspect-[4/5] w-full items-center justify-center p-6 text-center text-xs text-muted">
-                    Add photo in <code>content.ts</code>
-                  </div>
+                  <div className="aspect-[4/5] w-full bg-black/[0.04]" />
                 )}
               </div>
               <h3 className="mt-5 font-instrument-serif text-2xl text-foreground">{m.name}</h3>
