@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
 import { concerns } from '../data/content'
 
@@ -49,6 +50,33 @@ export default function Concerns() {
                     </li>
                   ))}
                 </ul>
+
+                {/* Market context strip — RMG only */}
+                {c.slug === 'ready-made-garments' && (
+                  <div className="mt-10 rounded-2xl border border-black/10 p-6">
+                    <p className="mb-5 text-xs uppercase tracking-[0.2em] text-muted">
+                      Industry context · Source: BGMEA / EPB
+                    </p>
+                    <div className="grid gap-4 sm:grid-cols-3">
+                      {[
+                        { value: '#2', label: 'Global RMG exporter' },
+                        { value: '$47.39B', label: 'FY 2023-24 exports' },
+                        { value: '4.2M', label: 'Industry workers nationwide' },
+                      ].map(({ value, label }) => (
+                        <div key={label}>
+                          <p className="font-instrument-serif text-3xl text-foreground">{value}</p>
+                          <p className="mt-1 text-sm text-muted">{label}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <Link
+                      to="/industry-intelligence"
+                      className="mt-5 inline-block text-sm text-foreground underline underline-offset-4 opacity-60 transition-opacity hover:opacity-100"
+                    >
+                      Full industry intelligence →
+                    </Link>
+                  </div>
+                )}
               </div>
             </article>
           ))}

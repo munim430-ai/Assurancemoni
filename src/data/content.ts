@@ -176,6 +176,7 @@ export const navLinks = [
   { label: 'About Us', to: '/about' },
   { label: 'Corporate Management', to: '/corporate-management' },
   { label: 'Our Concerns', to: '/concerns' },
+  { label: 'Industry Intelligence', to: '/industry-intelligence' },
   { label: 'Gallery', to: '/gallery' },
   { label: 'Contact', to: '/contact' },
 ]
