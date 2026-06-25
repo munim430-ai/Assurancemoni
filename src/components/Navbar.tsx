@@ -13,7 +13,7 @@ export default function Navbar() {
           <img
             src="/logo.jpeg"
             alt={company.name}
-            className="h-10 w-auto object-contain sm:h-12"
+            className="h-16 w-auto object-contain sm:h-20"
             onError={(e) => {
               ;(e.currentTarget.style.display = 'none')
               const fb = e.currentTarget.nextElementSibling as HTMLElement | null
