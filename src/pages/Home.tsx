@@ -1,6 +1,21 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { company, concerns, heroVideoUrl } from '../data/content'
+import { tickerItems } from '../data/industry'
+
+function LiveBdtTicker() {
+  const [rate, setRate] = useState<string | null>(null)
+  useEffect(() => {
+    fetch('https://open.er-api.com/v6/latest/USD')
+      .then((r) => r.json())
+      .then((d) => {
+        const bdt = d?.rates?.BDT
+        if (bdt) setRate(`1 USD = ৳${(bdt as number).toFixed(2)}`)
+      })
+      .catch(() => {})
+  }, [])
+  return rate ? <>{rate}</> : <>1 USD = ৳ live</>
+}
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement | null>(null)
@@ -94,6 +109,20 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      {/* ── Macro ticker strip ───────────────────────────────── */}
+      <div className="relative z-10 overflow-hidden border-y border-black/10 bg-foreground py-3">
+        <div className="flex animate-ticker-scroll gap-8 whitespace-nowrap text-xs tracking-widest text-white/70">
+          {[...tickerItems, ...tickerItems].map((item, i) => (
+            <span key={i} className="flex items-center gap-8">
+              {item === tickerItems[2]
+                ? <><span className="text-white/40">·</span>{' '}<LiveBdtTicker /></>
+                : <><span className="text-white/40">·</span>{' '}{item}</>
+              }
+            </span>
+          ))}
+        </div>
+      </div>
 
       {/* ── Concerns preview ─────────────────────────────────── */}
       <section className="relative z-10 mx-auto max-w-7xl px-8 py-24">
